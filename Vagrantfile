@@ -8,8 +8,9 @@ Vagrant.configure("2") do |config|
   config.winrm.password = "vagrant"
 
   # Configure base box parameters
-  config.vm.box = "tiny7"
-  config.vm.box_url = "./tiny7.box"
+  config.vm.box = "tiny7_puppet3.3.1"
+  # private basebox due to licensing foo. Modify to your needs accordingly.
+  config.vm.box_url = "../boxes/tiny7_puppet3.3.1.box"
   config.vm.guest = :windows
 
   # Port forward WinRM and RDP
