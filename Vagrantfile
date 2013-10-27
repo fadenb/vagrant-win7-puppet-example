@@ -14,7 +14,13 @@ Vagrant.configure("2") do |config|
   config.vm.guest = :windows
 
   # Port forward WinRM and RDP
-  config.vm.network :forwarded_port, guest: 3389, host: 3389
   config.vm.network :forwarded_port, guest: 5985, host: 5985
+
+  config.vm.provision :puppet do |puppet|
+    puppet.manifests_path = "manifests"
+    puppet.manifest_file  = "win7.pp"
+    puppet.module_path    = "modules"
+    puppet.options        = "--verbose --debug"
+  end
 
 end
